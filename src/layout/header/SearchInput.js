@@ -1,24 +1,15 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import { XIcon, SearchIcon } from "@heroicons/react/outline";
 import SearchbarListItem from "./SearchbarListItem";
+import useMainAnimeList from "../../hooks/useAnimeList";
 const SearchInput = () => {
   const [inputValue, setInputValue] = useState("");
-  const [animeList, setAnimeList] = useState([]);
+  const animeList = useMainAnimeList(
+    `/anime/?filter[text]=${inputValue}`,
+    0,
+    10
+  );
   const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const timer = setTimeout(async () => {
-      const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/anime/?filter[text]=${inputValue}`
-      );
-      const responseData = await response.data.data;
-      setAnimeList(responseData);
-      console.log(responseData);
-    }, 500);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [inputValue]);
   const handleFocus = () => {
     setVisible(true);
   };
@@ -52,9 +43,11 @@ const SearchInput = () => {
           )}
         </div>
       </div>
-      <ul className="absolute w-full top-12 max-h-96 h-96 overflow-auto no-scrollbar z-0">
-        <SearchbarListItem animeList={animeList} />
-      </ul>
+      {animeList.length > 0 && (
+        <ul className="absolute w-full top-12 max-h-96 h-96 overflow-auto no-scrollbar z-0">
+          <SearchbarListItem animeList={animeList} />
+        </ul>
+      )}
     </>
   );
 };

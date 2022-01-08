@@ -4,7 +4,10 @@ import { Link } from "react-router-dom";
 const MobileSideDrawer = (props) => {
   return (
     <>
-      <section className="mobile-sidedrawer" style={{ width: props.width }}>
+      <section
+        className="w-0 z-20 block xl:hidden lg:hidden md:hidden fixed top-0 right-0 h-screen bg-header-color ease-linear transition-all"
+        style={{ width: props.width }}
+      >
         <header className="flex w-full items-center justify-between p-4">
           <div className="w-3/4 relative">
             <SearchInput />

@@ -13,12 +13,14 @@ module.exports = {
         "blue-light": "#1b4ba4",
       },
       boxShadow: {
+        xl: "-1px 1px 0px 6px #0B0C2A",
         "2xl": "-1px 1px 0px 8px #0B0C2A",
+        card: "-1px 1px 16px 4px #1e40af",
       },
       spacing: {
         22: "5.5rem",
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss"), require("autoprefixer")],
 };

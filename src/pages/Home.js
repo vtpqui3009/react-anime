@@ -4,9 +4,9 @@ import Content from "../components/Content/Content";
 const Home = () => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <BannerSlider />
-      <Content />
+      {/* <Content /> */}
     </>
   );
 };

@@ -1,4 +1,9 @@
+import TopViewAnime from "./TopViewAnime";
 const SidebarContent = () => {
-  return <div className="w-4/12"></div>;
+  return (
+    <>
+      <TopViewAnime />
+    </>
+  );
 };
 export default SidebarContent;

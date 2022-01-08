@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,500;0,600;1,600;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,500;0,600;0,800;0,900;1,600;1,700;1,800;1,900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,9 +17,11 @@
   body {
     @apply bg-base-color;
   }
+  li {
+    @apply list-none;
+  }
 }
-
-@layer utilities {
+@layer components {
   /* Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
     @apply hidden;
@@ -28,14 +30,6 @@
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
-  .styled-text-ellipsis {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-break: break-word;
-  }
   /* ------------ Search component --------------*/
   .search-input {
     @apply w-full z-10 border-2 border-transparent px-4 py-2 outline-none rounded bg-blue-dark text-white hover:bg-hover-input-dark xl:text-base text-sm;
@@ -43,35 +37,34 @@
   .search-icon {
     @apply h-6 w-6 text-white absolute right-4 -top-3  z-10;
   }
-  /* ------------ Mobile drawler component --------------*/
-  .mobile-sidedrawer {
-    @apply w-0 z-20 xl:hidden md:block fixed top-0 right-0 h-screen bg-header-color transition duration-500;
-    transition: 0.25s linear;
-  }
   /* ------------ Slider component --------------*/
-  .slider {
-    @apply z-0 relative flex items-center justify-center mt-24;
-  }
-  .slider-image {
-    @apply rounded-lg object-cover;
-    width: 79vw;
-    height: 38vw;
-  }
-  .slider-content {
-    @apply absolute bottom-0 lg:bottom-1/4 md:bottom-8 sm:bottom-4 text-white p-10 w-2/4;
-  }
-  .slide {
-    @apply opacity-0 transition duration-1000 ease-out;
-  }
-  .slide.active {
-    @apply opacity-100 transition duration-1000 ease-in;
-  }
   .slider-prev-icon,
   .slider-next-icon {
-    @apply xl:w-12 xl:h-12 lg:w-11 lg:h-11 md:w-10 md:h-10 sm:w-9 sm:h-9 w-5 h-5 flex items-center justify-center text-white relative before:bg-blue-dark before:absolute before:inset-0 rotate-45 shadow-2xl;
+    @apply z-40 xl:w-12 xl:h-12 lg:w-11 lg:h-11 md:w-10 md:h-10 sm:w-9 sm:h-9 w-7 h-7 flex items-center justify-center bg-blue-dark;
   }
+}
+@layer utilities {
+  .styled-text-ellipsis {
+    @apply overflow-hidden text-ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-break: break-word;
+  }
+  .styled-text-ellipsis-six {
+    @apply overflow-hidden text-ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    word-break: break-word;
+  }
+  /* ------------ Backdrop component --------------*/
   .backdrop {
     @apply fixed top-0 left-0 w-full h-screen z-20;
     background-color: rgba(0, 0, 0, 0.75);
+  }
+  .image-wrapper {
+    @apply w-full h-full inset-0 absolute z-10 hidden group-hover:block;
+    background-color: rgba(0, 0, 0, 0.5);
   }
 }

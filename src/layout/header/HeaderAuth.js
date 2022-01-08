@@ -18,11 +18,11 @@ const HeaderAuth = () => {
         <div className="backdrop" onClick={handleCloseSideDrawer}></div>
       )}
       <div className="flex align-center items-center ">
-        <button className="outline-none bg-transparent rounded px-5 py-1 text-gray-200 border-slate-50 border-x border-y hidden xl:block">
+        <button className="outline-none bg-transparent rounded px-5 py-1 text-gray-200 border-slate-50 border-x border-y hidden xl:block lg:block md:block">
           Login
         </button>
         <MenuIcon
-          className="h-8 w-8 text-white xl:hidden md:block"
+          className="h-8 w-8 text-white block xl:hidden lg:hidden md:hidden"
           onClick={handleOpenSideDrawer}
         />
       </div>
